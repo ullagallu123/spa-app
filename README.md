@@ -39,3 +39,13 @@ docker run --rm -d --name frontend -p 80:80 --network crud frontend:v1
 ```bash
 docker run --rm -d --name react -p 3000:3000 --network crud react:v1
 ```
+
+docker run  -d --name backend \
+  -e DB_HOST=spa.c70m0wekgexs.ap-south-1.rds.amazonaws.com \
+  -e DB_USER=crud \
+  -e DB_PASSWORD=CrudApp1 \
+  -e DB_NAME=crud_app \
+  -p 8080:8080 \
+  --network crud \
+  --restart always \
+  backend:v1

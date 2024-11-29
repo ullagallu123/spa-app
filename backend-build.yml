@@ -3,4 +3,4 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    image: backend:v1
+    image: backend:spa-v1
