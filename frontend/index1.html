@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUD App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    input {
+      margin: 5px 0;
+      padding: 8px;
+      width: calc(100% - 18px);
+    }
+    button {
+      padding: 10px 15px;
+      margin: 5px 0;
+      cursor: pointer;
+    }
+    .loading {
+      color: #28a745;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>CRUD Application</h1>
+    <form id="entryForm">
+      <label for="amount">Amount:</label><br>
+      <input type="number" id="amount" required><br>
+      <label for="desc">Description:</label><br>
+      <input type="text" id="desc" required><br>
+      <button type="submit">Add Entry</button>
+    </form>
+
+    <h2>Entries</h2>
+    <div id="loading" class="loading" style="display:none;">Loading...</div>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Amount</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody id="entries"></tbody>
+    </table>
+  </div>
+
+  <script>
+    const API_URL = 'http://docker.ullagallubuffellomilk.store:8080/api/entries';
+
+    // Show loading message
+    function showLoading() {
+      document.getElementById('loading').style.display = 'block';
+    }
+
+    // Hide loading message
+    function hideLoading() {
+      document.getElementById('loading').style.display = 'none';
+    }
+
+    async function fetchEntries() {
+      showLoading();
+      try {
+        const response = await fetch(API_URL);
+        const entries = await response.json();
+        const tbody = document.getElementById('entries');
+        tbody.innerHTML = '';
+        entries.forEach(entry => {
+          const row = document.createElement('tr');
+          row.innerHTML = `<td>${entry.id}</td><td>${entry.amount}</td><td>${entry.description}</td>`;
+          tbody.appendChild(row);
+        });
+      } catch (error) {
+        console.error('Error fetching entries:', error);
+      } finally {
+        hideLoading();
+      }
+    }
+
+    document.getElementById('entryForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const amount = document.getElementById('amount').value;
+      const description = document.getElementById('desc').value;
+
+      try {
+        await fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ amount, description })
+        });
+
+        document.getElementById('entryForm').reset();
+        fetchEntries();
+      } catch (error) {
+        console.error('Error adding entry:', error);
+      }
+    });
+
+    // Initial fetch on page load
+    fetchEntries();
+  </script>
+</body>
+</html>
