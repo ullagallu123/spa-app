@@ -1,21 +1,11 @@
-# Base image
-FROM node:16-alpine
+FROM ubuntu:22.04
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y \
+    mysql-client \           
+    mongodb-mongosh \        
+    redis-tools \            
+    curl \                   
+    net-tools \              
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+CMD ["bash"]
 
-# Set working directory
-WORKDIR /app
-
-# Copy package files and install dependencies
-COPY package.json package-lock.json ./
-RUN npm install
-
-# Copy the app files
-COPY . .
-
-# Build the app
-RUN npm run build
-
-# Expose port
-EXPOSE 3000
-
-# Serve the app
-CMD ["npm", "start"]
