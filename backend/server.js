@@ -6,7 +6,7 @@ const db = require('./db-config'); // Ensure this points to your actual database
 const app = express();
 const PORT = process.env.PORT || 8080;
 const HOST = process.env.HOST || '0.0.0.0';
-const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || '*';
+const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || 'http://localhost:3000';
 
 // Middleware
 app.use(bodyParser.json());
@@ -17,6 +17,8 @@ app.use(cors({
   methods: ['GET', 'POST', 'DELETE', 'OPTIONS'], // Allow necessary methods
   allowedHeaders: ['Content-Type'], // Specify allowed headers
 }));
+
+console.log('CORS Allowed Origin:', ALLOWED_ORIGIN);
 
 // Preflight Request Handling
 app.options('/api/entries', cors());
