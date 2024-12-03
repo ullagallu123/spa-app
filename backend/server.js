@@ -13,17 +13,17 @@ app.use(bodyParser.json());
 
 // CORS Configuration
 app.use(cors({
-  origin: ALLOWED_ORIGIN, // Use the parameterized origin
-  methods: ['GET', 'POST', 'DELETE', 'OPTIONS'], // Allow necessary methods
-  allowedHeaders: ['Content-Type'], // Specify allowed headers
+  origin: ALLOWED_ORIGIN,
+  methods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type'],
 }));
 
 console.log('CORS Allowed Origin:', ALLOWED_ORIGIN);
 
-// Preflight Request Handling
+
 app.options('/api/entries', cors());
 
-// Health Check Route
+
 app.get('/health', (req, res) => {
   res.status(200).send(`
     <html>
