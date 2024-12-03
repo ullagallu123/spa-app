@@ -6,7 +6,7 @@ const db = require('./db-config'); // Ensure this points to your actual database
 const app = express();
 const PORT = process.env.PORT || 8080;
 const HOST = process.env.HOST || '0.0.0.0';
-const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || 'http://localhost:3000';
+const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN;
 
 // Middleware
 app.use(bodyParser.json());
