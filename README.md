@@ -58,3 +58,6 @@ curl -X POST \
   -d '{"key":"value"}' \
   http://backend:8081/api/entries
 ```
+```bash
+curl -I http://backend:8082/api/entries
+```
