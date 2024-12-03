@@ -50,5 +50,5 @@ docker run  -d --name backend \
   -p 8080:8080 \
   --network crud \
   --restart always \
-  backend:v1
+  backend:spa-v1
 ```
