@@ -6,7 +6,7 @@ import EntryForm from './components/EntryForm';
 import EntryList from './components/EntryList';
 
 const API_URL = 'http://backend:8082/api/entries';
-
+console.log('Connecting to API:', API_URL);
 
 function App() {
   const [entries, setEntries] = useState([]);
