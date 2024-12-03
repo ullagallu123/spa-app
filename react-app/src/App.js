@@ -5,7 +5,7 @@ import Footer from './components/Footer';
 import EntryForm from './components/EntryForm';
 import EntryList from './components/EntryList';
 
-const API_URL = 'http://backend:8082/api/entries';
+const API_URL = 'https://spa-alb.bapatlas.site/api/entries';
 console.log('Connecting to API:', API_URL);
 
 function App() {
