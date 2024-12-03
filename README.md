@@ -46,6 +46,7 @@ docker run  -d --name backend \
   -e DB_USER=crud \
   -e DB_PASSWORD=CrudApp1 \
   -e DB_NAME=crud_app \
+  -e ALLOWED_ORIGIN=http://react:3000/ \
   -p 8080:8080 \
   --network crud \
   --restart always \
