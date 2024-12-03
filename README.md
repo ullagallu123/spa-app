@@ -47,7 +47,7 @@ docker run  -dit --name backend \
   -e DB_PASSWORD=CrudApp1 \
   -e DB_NAME=crud_app \
   -e ALLOWED_ORIGIN=http://react:3000/api/entries \
-  -p 8080:8080 \
+  -p 8081:8080 \
   --network crud \
   --restart always \
   backend:spa-v1
