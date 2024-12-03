@@ -41,8 +41,8 @@ docker run --rm -d --name react -p 3000:3000 --network crud react:v1
 ```
 
 ```bash
-docker run  -d --name backend \
-  -e DB_HOST=spa.c70m0wekgexs.ap-south-1.rds.amazonaws.com \
+docker run  -dit --name backend \
+  -e DB_HOST=spa-db.bapatlas.site \
   -e DB_USER=crud \
   -e DB_PASSWORD=CrudApp1 \
   -e DB_NAME=crud_app \
