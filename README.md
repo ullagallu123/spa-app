@@ -52,3 +52,9 @@ docker run  -dit --name backend \
   --restart always \
   backend:spa-v1
 ```
+```bash
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d '{"key":"value"}' \
+  http://backend:8081/api/entries
+```
