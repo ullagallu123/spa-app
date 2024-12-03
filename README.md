@@ -5,7 +5,7 @@
 docker network create crud
 ```
 ```bash
-docker run --rm -d --name debug --network crud siva9666/debug-utility:v1
+docker run --rm -dit --name debug --network crud siva9666/debug-utility:v1
 ```
 
 ```bash
