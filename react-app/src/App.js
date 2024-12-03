@@ -5,7 +5,7 @@ import Footer from './components/Footer';
 import EntryForm from './components/EntryForm';
 import EntryList from './components/EntryList';
 
-const API_URL = 'http://backend:8080/api/entries';
+const API_URL = 'http://backend:8082/api/entries';
 
 function App() {
   const [entries, setEntries] = useState([]);
