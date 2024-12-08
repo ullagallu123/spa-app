@@ -23,6 +23,20 @@ app.use(bodyParser.json());
 // // Preflight Request Handling
 // app.options('/api/entries', cors());
 
+// CORS Configuration
+const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || '*';  // Allow all origins (for now)
+
+app.use(cors({
+  origin: ALLOWED_ORIGIN,   // You can set this to your frontend domain in production
+  methods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
+console.log('CORS Allowed Origin:', ALLOWED_ORIGIN);
+
+// Preflight Request Handling
+app.options('/api/entries', cors());
+
 // Health Check Route
 app.get('/health', (req, res) => {
   res.status(200).send(`
