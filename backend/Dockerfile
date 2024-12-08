@@ -9,5 +9,5 @@ COPY *.js ./
 COPY .env ./
 RUN npm install --production
 USER crud
-EXPOSE 8080
+EXPOSE 8082
 CMD ["node", "server.js"]
