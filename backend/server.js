@@ -6,22 +6,10 @@ const db = require('./db-config'); // Ensure this points to your actual database
 const app = express();
 const PORT = process.env.PORT || 8082;
 const HOST = process.env.HOST || '0.0.0.0';
-//const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN;
+
 
 // Middleware
 app.use(bodyParser.json());
-
-// CORS Configuration
-// app.use(cors({
-//   origin: ALLOWED_ORIGIN, // Use the parameterized origin
-//   methods: ['GET', 'POST', 'DELETE', 'OPTIONS'], // Allow necessary methods
-//   allowedHeaders: ['Content-Type'], // Specify allowed headers
-// }));
-
-// console.log('CORS Allowed Origin:', ALLOWED_ORIGIN);
-
-// // Preflight Request Handling
-// app.options('/api/entries', cors());
 
 // CORS Configuration
 const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || '*';  // Allow all origins (for now)
