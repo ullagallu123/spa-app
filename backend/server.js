@@ -4,15 +4,15 @@ const cors = require('cors');
 const db = require('./db-config'); // Ensure this points to your actual database config
 
 const app = express();
-const PORT = process.env.PORT || 8082;
-const HOST = process.env.HOST || '0.0.0.0';
+const PORT = process.env.PORT;
+const HOST = process.env.HOST;
 
 
 // Middleware
 app.use(bodyParser.json());
 
 // CORS Configuration
-const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || '*';  // Allow all origins (for now)
+const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN;  // Allow all origins (for now)
 
 app.use(cors({
   origin: ALLOWED_ORIGIN,   // You can set this to your frontend domain in production
