@@ -5,7 +5,7 @@
 docker network create crud
 ```
 ```bash
-docker run --rm -d --name debug --network crud siva9666/debug-utility:v1
+docker run --rm -dit --name debug --network crud siva9666/debug-utility:v1
 ```
 
 ```bash
@@ -40,12 +40,24 @@ docker run --rm -d --name frontend -p 80:80 --network crud frontend:v1
 docker run --rm -d --name react -p 3000:3000 --network crud react:v1
 ```
 
-docker run  -d --name backend \
-  -e DB_HOST=spa.c70m0wekgexs.ap-south-1.rds.amazonaws.com \
+```bash
+docker run  -dit --name backend \
+  -e DB_HOST=spa-db.bapatlas.site \
   -e DB_USER=crud \
   -e DB_PASSWORD=CrudApp1 \
   -e DB_NAME=crud_app \
-  -p 8080:8080 \
+  -e ALLOWED_ORIGIN=http://react:3000/api/entries \
+  -p 8081:8080 \
   --network crud \
   --restart always \
-  backend:v1
+  backend:spa-v1
+```
+```bash
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d '{"key":"value"}' \
+  http://backend:8081/api/entries
+```
+```bash
+curl -I http://backend:8082/api/entries
+```
