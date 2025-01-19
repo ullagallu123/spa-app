@@ -12,7 +12,7 @@ const HOST = process.env.HOST;
 app.use(bodyParser.json());
 
 // CORS Configuration
-const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN;  // Allow all origins (for now)
+const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || '*';  // Allow all origins (for now)
 
 app.use(cors({
   origin: ALLOWED_ORIGIN,   // You can set this to your frontend domain in production
