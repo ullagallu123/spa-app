@@ -92,7 +92,7 @@ function App() {
         />
       </div>
 
-      <footer>&copy; 2024 CRUD App. All rights reserved.</footer>
+      <footer>&copy; 2025 CRUD App. All rights reserved.</footer>
     </div>
   );
 }
