@@ -6,9 +6,6 @@ COPY . .
 RUN npm run build
 FROM nginx:alpine
 COPY --from=build /app/dist /usr/share/nginx/html
-COPY crud.conf /etc/nginx/conf.d/crud.conf
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+COPY nginx.conf /opt/nginx.conf
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["sh", "all.sh"]
