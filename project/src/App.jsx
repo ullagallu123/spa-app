@@ -3,7 +3,7 @@ import EntryForm from './components/EntryForm';
 import EntriesTable from './components/EntriesTable';
 import './index.css';
 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VITE_API_URL || 'http://default-api-url';
 
 function App() {
   const [entries, setEntries] = useState([]);
