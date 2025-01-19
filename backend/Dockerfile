@@ -6,7 +6,6 @@ RUN chown crud:crud -R /opt/server
 WORKDIR /opt/server
 COPY package.json ./
 COPY *.js ./
-COPY .env ./
 RUN npm install --production
 USER crud
 EXPOSE 8080
