@@ -10,9 +10,12 @@ COPY . .
 
 RUN npm run build
 
+# Debugging step: Verify build output
+RUN ls -al /app  # This will show the files in the container after build
+
 FROM nginx:alpine
 
-COPY --from=build-stage /app/dist /usr/share/nginx/html  # Update this path if needed
+COPY --from=build-stage /app/build /usr/share/nginx/html  # Adjust path if needed
 
 COPY default.conf /etc/nginx/conf.d/default.conf
 
