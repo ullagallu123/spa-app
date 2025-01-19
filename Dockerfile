@@ -1,21 +1,17 @@
-# Base image
-FROM node:16-alpine
+FROM ubuntu:20.04
 
-# Set working directory
-WORKDIR /app
+ENV DEBIAN_FRONTEND=noninteractive
 
-# Copy package files and install dependencies
-COPY package.json package-lock.json ./
-RUN npm install
+RUN apt-get update && apt-get install -y \
+    gnupg curl software-properties-common \
+    && curl -fsSL https://pgp.mongodb.com/server-6.0.asc | gpg --dearmor -o /usr/share/keyrings/mongodb-archive-keyring.gpg \
+    && echo "deb [signed-by=/usr/share/keyrings/mongodb-archive-keyring.gpg] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-6.0.list \
+    && apt-get update && apt-get install -y \
+    mysql-client \
+    mongosh \
+    redis-tools \
+    curl \
+    net-tools \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Copy the app files
-COPY . .
-
-# Build the app
-RUN npm run build
-
-# Expose port
-EXPOSE 3000
-
-# Serve the app
-CMD ["npm", "start"]
+CMD ["bash"]

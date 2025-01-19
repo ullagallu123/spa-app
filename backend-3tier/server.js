@@ -1,26 +1,22 @@
+
+require('newrelic');  
+require('./otel');  
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const db = require('./db-config'); // Ensure this points to your actual database config
+const db = require('./db-config'); 
 
 const app = express();
 const PORT = process.env.PORT;
 const HOST = process.env.HOST;
 
 
-// Middleware
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cors());
 
-// CORS Configuration
-const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN;  // Allow all origins (for now)
-
-app.use(cors({
-  origin: ALLOWED_ORIGIN,   // You can set this to your frontend domain in production
-  methods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
-
-console.log('CORS Allowed Origin:', ALLOWED_ORIGIN);
+console.log('CORS: All origins are allowed.');
 
 // Preflight Request Handling
 app.options('/api/entries', cors());
@@ -88,5 +84,5 @@ app.delete('/api/entries/:id', (req, res) => {
 
 // Start Server
 app.listen(PORT, HOST, () => {
-  console.log(`Server is running on port \x1b[32m${PORT}\x1b[0m`);
+  console.log(`Server is running on port ${PORT}`);
 });
