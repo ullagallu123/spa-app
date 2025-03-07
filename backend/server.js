@@ -4,8 +4,8 @@ const cors = require('cors');
 const db = require('./db-config'); // Ensure this points to your actual database config
 
 const app = express();
-const PORT = process.env.PORT;
-const HOST = process.env.HOST;
+const PORT = process.env.PORT || 8080;
+const HOST = process.env.HOST || '0.0.0.0';
 
 
 // Middleware
@@ -88,5 +88,5 @@ app.delete('/api/entries/:id', (req, res) => {
 
 // Start Server
 app.listen(PORT, HOST, () => {
-  console.log(`Server is running on port \x1b[32m${PORT}\x1b[0m`);
+   console.log(`Server is running on http://${HOST}:${PORT}`);
 });
