@@ -7,8 +7,8 @@ const cors = require('cors');
 const db = require('./db-config'); 
 
 const app = express();
-const PORT = process.env.PORT;
-const HOST = process.env.HOST;
+const PORT = process.env.PORT | 8080 ;
+const HOST = process.env.HOST | 'localhost';
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
