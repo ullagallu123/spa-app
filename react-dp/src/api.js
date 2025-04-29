@@ -1,4 +1,4 @@
-const API_URL = 'https://spa-alb.bapatlas.site/api/entries';
+const API_URL = process.env.REACT_APP_API_URL;
 
 export const fetchEntries = async () => {
   const response = await fetch(API_URL);
