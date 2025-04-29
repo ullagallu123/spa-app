@@ -15,11 +15,10 @@ app.use(bodyParser.json());
 const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN;  // Allow all origins (for now)
 
 app.use(cors({
-  origin: ALLOWED_ORIGIN,   // You can set this to your frontend domain in production
+  origin: '*',
   methods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
-
 console.log('CORS Allowed Origin:', ALLOWED_ORIGIN);
 
 // Preflight Request Handling
