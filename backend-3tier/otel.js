@@ -31,3 +31,5 @@ sdk.start()
   .catch((err) => {
     console.error('Error starting OpenTelemetry:', err);
   });
+
+  
