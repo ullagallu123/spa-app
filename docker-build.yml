@@ -1,0 +1,14 @@
+services:
+  mysql:
+    build:
+      context: ./mysql
+      dockerfile: Dockerfile
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+  frontend:
+    build:
+      context: ./react-dp
+      dockerfile: Dockerfile
+ 

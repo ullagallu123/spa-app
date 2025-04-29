@@ -1,6 +1,0 @@
-services:
- frontend:
-    build:
-      context: ./react-app
-      dockerfile: Dockerfile
-    image: react:v1
