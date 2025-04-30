@@ -69,8 +69,8 @@ services:
   react:
     image: pro:v1
     container_name: react
-    # volumes:
-    #   - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
     ports:
       - "80:80"
     networks:
