@@ -11,7 +11,7 @@ services:
     image: backend:v1
   frontend:
     build:
-      context: ./react-dp
+      context: ./project-1
       dockerfile: Dockerfile
     image: react:v1
  
