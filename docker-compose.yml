@@ -1,30 +1,30 @@
 services:
-  mysql:
-    image: mysql:v1
-    container_name: mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: CrudApp@1
-    networks:
-      - spa
-    restart: always
+  # mysql:
+  #   image: mysql:v1
+  #   container_name: mysql
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: CrudApp@1
+  #   networks:
+  #     - spa
+  #   restart: always
 
-  redis:
-    image: redis
-    container_name: redis
-    command: ["redis-server", "--loglevel", "debug"]
-    networks:
-      - spa
-    restart: always
+  # redis:
+  #   image: redis
+  #   container_name: redis
+  #   command: ["redis-server", "--loglevel", "debug"]
+  #   networks:
+  #     - spa
+  #   restart: always
 
   backend:
     image: backend:v1
     container_name: backend
     environment:
-      DB_HOST: mysql
+      DB_HOST: database-1.c3wyqiessbzl.ap-south-1.rds.amazonaws.com
       DB_USER: crud
       DB_PASSWORD: CrudApp@1
       DB_NAME: crud_app
-      REDIS_HOST: redis
+      REDIS_HOST: example-drijgy.serverless.aps1.cache.amazonaws.com
       REDIS_PORT: 6379
     networks:
       - spa
