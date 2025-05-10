@@ -282,7 +282,7 @@ app.get('/api/entries', async (req, res) => {
       }
 
       console.log('Serving from Database and caching the result');
-      await redis.set(cacheKey, JSON.stringify(results), 'EX', 60); // Cache for 1 minute
+      await redis.set(cacheKey, JSON.stringify(results), 'EX', 300); // Cache for 1 minute
       res.json(results);
     });
   } catch (err) {
