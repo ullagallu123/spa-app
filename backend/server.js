@@ -138,4 +138,6 @@ app.listen(PORT, HOST, () => {
 });
 
 
+// apt update
+// apt install -y jq
 // redis-cli GET all_entries
