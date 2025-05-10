@@ -328,7 +328,7 @@ app.post('/api/entries', (req, res) => {
     console.log('Inserted entry with ID:', result.insertId);
 
     // Clear the cache because data changed
-    // await redis.del('all_entries');
+    await redis.del('all_entries');
     console.log('Cache cleared for all_entries');
 
     res.status(201).send({ id: result.insertId, amount, description });
@@ -353,7 +353,7 @@ app.delete('/api/entries/:id', (req, res) => {
     console.log('Deleted entry with ID:', entryId);
 
     // Clear the cache because data changed
-    // await redis.del('all_entries');
+    await redis.del('all_entries');
     console.log('Cache cleared for all_entries');
 
     res.send({ message: 'Entry deleted successfully' });
