@@ -1,9 +1,9 @@
 services:
-  # mysql:
-  #   build:
-  #     context: ./mysql
-  #     dockerfile: Dockerfile
-  #   image: mysql:v1
+  mysql:
+    build:
+      context: ./mysql
+      dockerfile: Dockerfile
+    image: mysql:v1
   backend:
     build:
       context: ./backend
