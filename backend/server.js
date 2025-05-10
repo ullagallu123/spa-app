@@ -291,6 +291,25 @@ app.get('/api/entries', async (req, res) => {
   }
 });
 
+
+app.get('/debug/redis', async (req, res) => {
+  try {
+    const keys = await redis.keys('*');
+    const entries = await Promise.all(
+      keys.map(async (key) => {
+        const type = await redis.type(key);
+        let value;
+        if (type === 'string') value = await redis.get(key);
+        return { key, type, value };
+      })
+    );
+    res.json(entries);
+  } catch (err) {
+    res.status(500).json({ error: 'Redis debug failed', details: err.message });
+  }
+});
+
+
 // Add New Entry
 app.post('/api/entries', (req, res) => {
   const { amount, description } = req.body;
